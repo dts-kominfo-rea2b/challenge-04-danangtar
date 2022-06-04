@@ -8,7 +8,27 @@ const dates = [
 ];
 
 // TODO: Buatlah fungsi createDate
-const createDate = null;
+const createDate = function(dateString, posisi) {
+  var dates = [];
+  dateString.forEach(date => {
+    dates.push(Math.round(new Date(date) / 1000));
+  });
+
+  var epoch = makeDate(dates);
+  return epoch(posisi);
+};
+
+function makeDate(dates) {
+  return function(posisi) {
+    if(isNaN(posisi))
+    {
+      dates.sort();
+      return dates.join("-");
+    }
+    else
+      return String(dates[posisi]);
+  };
+};
 
 // ! JANGAN DIMODIFIKASI
 (() => {
